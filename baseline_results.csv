@@ -1,0 +1,2 @@
+tfidf_mrr,tfidf_hit@1,tfidf_recall@5,tfidf_recall@10,lsa_mrr,lsa_hit@1,lsa_recall@5,lsa_recall@10
+0.576694759,0.370509383,0.004083095,0.00790983,0.501925902,0.261126005,0.003695627,0.007402197

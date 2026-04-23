@@ -36,9 +36,7 @@ This repository is being updated in stages to reflect continuous research progre
 
 ## Method Summary
 
-The final lightweight hybrid model combines TF-IDF similarity with metadata similarity using a weighted fusion strategy:
-
-`S_hybrid = 0.85 * S_tfidf + 0.15 * S_meta`
+Future work will extend the baseline retrieval pipeline with a lightweight lexical-metadata hybrid model.
 
 The model is evaluated using:
 

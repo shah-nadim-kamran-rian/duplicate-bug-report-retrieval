@@ -13,7 +13,6 @@ def load_bug_folder(folder_path):
         if os.path.isfile(file_path):
             data[name.strip()] = pd.Series(read_attribute_file(file_path), dtype="string")
 
-    # This is safer than pd.concat(columns, axis=1)
     df = pd.DataFrame(data)
     return df
 
@@ -43,12 +42,11 @@ mozilla["dataset_group"] = "mozilla"
 
 df = pd.concat([eclipse, mozilla], ignore_index=True, sort=False)
 
-# Clean column names
+# Cleaning column names 
 df.columns = [str(c).strip() for c in df.columns]
 
 print("Columns found:", list(df.columns))
 
-# Keep what exists
 wanted = ["short_desc.xml", "bug_status.xml", "component.xml", "product.xml", "project_subfolder", "dataset_group"]
 existing = [c for c in wanted if c in df.columns]
 df = df[existing].copy()
@@ -63,7 +61,6 @@ df = df.rename(columns=rename_map)
 
 print("Columns after rename:", list(df.columns))
 
-# Make sure text exists
 if "text" not in df.columns:
     raise ValueError("Column 'short_desc' was not found, so 'text' could not be created.")
 
@@ -72,7 +69,7 @@ df = df.dropna(subset=["text"])
 df["text"] = df["text"].astype(str).str.strip()
 df = df[df["text"].str.len() > 10]
 
-# Limit for your laptop
+
 df = df.head(10000).copy()
 
 out_path = r"C:\Users\ASUS\Desktop\dbd_run\real_data.csv"

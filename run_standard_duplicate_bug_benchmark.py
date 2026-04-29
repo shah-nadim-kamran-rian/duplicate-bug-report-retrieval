@@ -148,8 +148,8 @@ def main():
     print("Loading data...")
     df = load_data(args.csv)
 
-    # Limit for your laptop
-    df = df.head(3000).copy()
+    
+    df = df.head(10000).copy()
 
     groups = build_proxy_groups(df)
 
@@ -169,7 +169,7 @@ def main():
     tfidf_norm = normalize_matrix(tfidf_sim)
     meta_norm = normalize_matrix(meta_sim)
 
-    # Tuned hybrid: TF-IDF dominant, metadata only as small boost
+    
     alpha = 0.85
     gamma = 0.15
 
